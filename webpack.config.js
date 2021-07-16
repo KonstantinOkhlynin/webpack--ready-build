@@ -52,6 +52,7 @@ module.exports = {
             ],
           }),
           new MiniCssExtractPlugin({
+            
             filename: filename('css'),
           })
     ],
@@ -78,6 +79,33 @@ module.exports = {
               'astroturf/loader' 
           ]
           },
+          {
+            test: /\.(eot|ttf|woff|woff2)$/,
+            loader: 'file-loader',
+            options: {
+              name: './fonts/[name].[ext]',
+          }
+        },
+
+        {
+            test: /\.(png|jpe?g|svg|gif|ico)$/,
+            use: [
+                {
+                    loader: 'file-loader',
+                    options: {
+                        name: './images/[name].[ext]',
+                        esModule: false
+                    }
+                },
+                {
+                    loader: 'image-webpack-loader',
+                    options: {
+                        bypassOnDebug: true,
+                        disable: true,
+                    },
+                },
+            ]
+        },
         ],
       },
       
