@@ -63,6 +63,7 @@ module.exports = {
             use: [
               (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
               "css-loader",
+              'resolve-url-loader',                                          // Решил проблему работы url в стилях. 24.08.21
               "postcss-loader",
               "sass-loader"
             ],
